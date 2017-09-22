@@ -1,6 +1,6 @@
 <?php
 
-use \App\Post;
+use \App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +13,6 @@ use \App\Post;
 |
 */
 
-Route::get('/posts', ['as' => 'all-posts', 'uses' => function () {
-    $posts = Post::getPublishedPosts();
-    return view('posts', compact(['posts']));
-}]);
+Route::get('/posts', ['as' => 'all-posts', 'uses' => 'PostsController@index']);
 
-Route::get('/posts/{id}', ['as' => 'single-post', 'uses' => function ($id) {
-    $post = Post::find($id);
-    return view('single-post', compact(['post']));
-}]);
+Route::get('/posts/{id}', ['as' => 'single-post', 'uses' => 'PostsController@show']);
