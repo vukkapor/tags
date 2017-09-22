@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>@yield('title')</title>
+        @include('partials.header')
     </head>
     <body>
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 blog-main">
+                    @yield('content')
+                </div>
+                <div class="col-sm-3 offset-sm-1 blog-sidebar">
+                    @include('partials.sidebar')
+                </div>
+            </div>
+        </div>
+        @include('partials.footer')
     </body>
 </html>
