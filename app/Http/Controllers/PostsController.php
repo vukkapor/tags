@@ -10,12 +10,12 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::getPublishedPosts();
-        return view('posts', compact(['posts']));
+        return view('posts.index', compact(['posts']));
     }
 
     public function show($id)
     {
         $post = Post::find($id);
-        return view('single-post', compact(['post']));
+        return view('posts.show', compact(['post']));
     }
 }
