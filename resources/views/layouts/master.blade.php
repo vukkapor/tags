@@ -4,6 +4,11 @@
         @include('partials.header')
     </head>
     <body>
+        <div class="blog-header">
+            <div class="container">
+                <h1 class="blog-title">Laravel blog</h1>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 blog-main">
