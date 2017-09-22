@@ -26,6 +26,8 @@ class PostsController extends Controller
 
     public function store()
     {
+        $this->validate(request(), ['title' => 'required', 'body' => 'required | min:15']);
+
         $post = Post::create(request()->all());
 
         return redirect()->route('all-posts');
