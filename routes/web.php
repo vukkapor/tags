@@ -15,4 +15,8 @@ use \App\Http\Controllers\PostsController;
 
 Route::get('/posts', ['as' => 'all-posts', 'uses' => 'PostsController@index']);
 
+Route::get('/posts/create', ['as' => 'create-post', 'uses' => 'PostsController@create']);
+
+Route::post('/posts', ['as' => 'store-post', 'uses' => 'PostsController@store']);
+
 Route::get('/posts/{id}', ['as' => 'single-post', 'uses' => 'PostsController@show']);
