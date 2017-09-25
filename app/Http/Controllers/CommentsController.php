@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 
 class CommentsController extends Controller
 {
@@ -11,7 +12,7 @@ class CommentsController extends Controller
     {
         $post = Post::find($postId);
 
-        $this->validate(request(), ['author' => 'required | string', 'text' => 'required | min:15']);
+        $this->validate(request(), Comment::STORE_RULES);
 
         $post->comments()->create(request()->all());
 

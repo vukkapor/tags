@@ -9,6 +9,11 @@ class Post extends Model
 
     protected $guarded = ['id'];
 
+    const STORE_RULES = [
+        'title' => 'required',
+        'body' => 'required | min:15'
+    ];
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
