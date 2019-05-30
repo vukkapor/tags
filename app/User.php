@@ -8,7 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    const STORE_RULES = [
+        "name" => "required",
+        "email" => "required|email",
+        "password" => "required|min:6"
+    ];
     /**
      * The attributes that are mass assignable.
      *

@@ -6,7 +6,25 @@
     <body>
         <div class="blog-header">
             <div class="container">
-                <h1 class="blog-title">Laravel blog</h1>
+                    @if (Auth::check())
+                        <p>
+                            Welcome, {{Auth()->user()->name}}
+                        </p>
+                        <a href="/logout" class="nav">
+                            Logout
+                        </a>
+                    @endif
+                    @if(!Auth::check())
+                    <p>
+                        Welcome, Guest
+                    </p>
+                    <a href="/login" class="nav">
+                        Login
+                    </a>
+                    <a href="/register" class="nav">
+                        Register
+                    </a>
+                    @endif
             </div>
         </div>
         <div class="container">

@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
     public function index()
     {
         $posts = Post::getPublishedPosts();
-        return view('posts.index', compact(['posts']));
+        if(Auth::check()){
+            return view('posts.index', compact(['posts']));
+        }
+        return view("auth.login");
     }
 
     public function show($id)
