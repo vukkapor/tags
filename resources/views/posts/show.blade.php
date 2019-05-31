@@ -6,7 +6,21 @@
 
 @section('content')
     <h1 class="blog-post-title">{{ $post->title }}</h1>
+
+    @if($post->user)
+        Author: <a href="/users/{{$post->user->id}}">{{ $post->user->name}}</a>
+    @endif
     <p>{{ $post->body }}</p>
+    <hr>
+    @if (count($post->tags))
+    <ul>
+        @foreach ($post->tags as $tag)
+            <li>
+                <a href="">{{$tag->name}}</a>
+            </li>
+        @endforeach
+    </ul>
+@endif
     @if(count($post->comments))
         <hr/>
         <h4>Comments:</h4>

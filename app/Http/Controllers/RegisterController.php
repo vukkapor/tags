@@ -31,6 +31,8 @@ class RegisterController extends Controller
         
         auth()->login($user);
 
+        session()->flash("message", "Registrovan");
+
         return redirect()->route("all-posts");
     }
 }

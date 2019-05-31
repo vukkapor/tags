@@ -21,6 +21,16 @@ class Post extends Model
 
     public static function getPublishedPosts()
     {
-        return self::where('published', true)->get();
+        return self::where('published', true);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, "user_id");
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

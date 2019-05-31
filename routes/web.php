@@ -14,7 +14,7 @@ use \App\Http\Controllers\CommentsController;
 */
 
 
-Route::get('/posts', ['as' => 'all-posts', 'uses' => 'PostsController@index'])->middleware('auth');
+Route::get('/posts', ['as' => 'all-posts', 'uses' => 'PostsController@index']);
 
 Route::get('/posts/create', ['as' => 'create-post', 'uses' => 'PostsController@create']);
 
@@ -24,12 +24,21 @@ Route::get('/posts/{id}', ['as' => 'single-post', 'uses' => 'PostsController@sho
 
 Route::post('/posts/{postId}/comments', ['as' => 'comments-post', 'uses' => 'CommentsController@store']);
 
-Route::get('/register',"RegisterController@create")->name("register")->middleware("guest");
 
-Route::post("/register", "RegisterController@store");
+Route::get('/register',"RegisterController@create")->name("register");
 
-Route::get("/login", "LoginController@create")->name("login")->middleware("guest");
+Route::post("/register", "RegisterController@store")->middleware("age");
+
+
+
+Route::get("/login", "LoginController@create");
 
 Route::post("/login", "LoginController@store");
 
+
 Route::get("/logout", "LoginController@destroy");
+
+
+Route::get("/users/{id}", "UsersController@show");
+
+Route::post("/tags/store", "TagsController@store");

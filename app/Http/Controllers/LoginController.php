@@ -7,10 +7,11 @@ use App\User;
 
 class LoginController extends Controller
 {
-    public function _construct()
+    public function __construct()
     {
         $this->middleware("guest", ["except" => "destroy"]);
     }
+
     public function create()
     {
         return view("auth.login");
@@ -18,15 +19,14 @@ class LoginController extends Controller
 
     public function store()
     {
-        if(!auth()
-            ->attempt(request(
-                ["email", "password"])))
+        if(!auth()->attempt(request(["email", "password"])))
         {
             return back()->withErrors([
                 "message" => "Bad credentials. Please try again"
             ]);
         }
         
+        session()->flash("message", "Loginovan");
         return redirect()->route("all-posts");
     }
 

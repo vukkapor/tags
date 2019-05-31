@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
     <h2 class="blog-post-title">Create new post</h2>
 
     <form method="POST" action="{{ route('store-post') }}">
