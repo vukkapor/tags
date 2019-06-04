@@ -28,7 +28,14 @@
             <label for="published">Publish?</label>
             <input type="checkbox" class="form-control" id="published" name="published" value="1"/>
         </div>
-
+        
+        <div class="form-group">
+            <label for="tags[]">Tags</label>
+            @foreach ($tags as $tag)
+                <br><input type="checkbox" name="tags[]" value ="{{ $tag->id }}" id="tags[]"> {{ $tag->name }} 
+            @endforeach
+        </div
+        >
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

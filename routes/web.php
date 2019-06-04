@@ -41,4 +41,4 @@ Route::get("/logout", "LoginController@destroy");
 
 Route::get("/users/{id}", "UsersController@show");
 
-Route::post("/tags/store", "TagsController@store");
+Route::get('/posts/tags/{tag}', 'TagsController@index');

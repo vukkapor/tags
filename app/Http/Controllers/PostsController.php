@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Post;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
@@ -15,7 +16,7 @@ class PostsController extends Controller
     public function index()
     {
 
-        $posts = Post::getPublishedPosts()->with("user")->with("tags")->get();
+        $posts = Post::getPublishedPosts()->with("user")->with("tags")->paginate(10);
         
         // $user_id = Post::with("user")->find($id);
 
@@ -35,15 +36,16 @@ class PostsController extends Controller
 
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+        return view('posts.create', compact('tags'));
     }
 
     public function store()
-    {
+    {/* 
         $this->validate(request(), Post::STORE_RULES);
 
         $post = Post::create(request()->all());
-/* 
+  */
         $post = new Post;
 
         $post->title = request("title");
@@ -51,7 +53,9 @@ class PostsController extends Controller
         $post->published = request("published");
         $post->user_id = auth()->user()->id;
 
-        $post->save(); */
+        $post->save(); 
+
+        $post->tags()->attach(request('tags'));
 
         return redirect()->route('all-posts');
     }

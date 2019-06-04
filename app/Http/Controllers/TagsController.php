@@ -7,19 +7,16 @@ use App\Tag;
 
 class TagsController extends Controller
 {
-    public function __construct()
+    public function index(Tag $tag)
     {
+        $posts = $tag->posts;
 
-    }
-    
-    public function index()
-    {
-
+        return view('posts.index', compact('posts'));
     }
 
     public function create()
     {
-
+        
     }
 
     public function store(Request $request)
