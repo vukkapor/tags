@@ -38,3 +38,9 @@ $factory->define(App\Comment::class, function(Faker\Generator $faker) {
         'text' => $faker->sentences(1, true)
     ];
 });
+
+$factory->define(App\Tag::class, function(Faker\Generator $faker) {
+    return [
+        'name' => $faker->unique()->text
+    ];
+});

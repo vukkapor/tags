@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
-    public function __constructor()
+    public function __construct()
     {
-        $this->middleware("auth", ["except" => ["index", "show"]]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
     public function index()
     {
